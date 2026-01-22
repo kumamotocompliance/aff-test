@@ -1,35 +1,40 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>CV</title>
-  <meta name="robots" content="noindex,nofollow">
+<meta charset="UTF-8">
+<title>CV</title>
+<meta name="robots" content="noindex,nofollow">
 
 <script>
-  if (!localStorage.getItem("cv_fired")) {
+  // URL優先 → なければ localStorage
+  const params = new URLSearchParams(location.search);
+  const cid = params.get("cid") || localStorage.getItem("asp_cid");
+
+  if (!cid) {
+    console.error("cid not found → tracking NG");
+  }
+
+  if (!localStorage.getItem("cv_fired") && cid) {
     localStorage.setItem("cv_fired", "1");
 
-    const clickId = localStorage.getItem("asp_click_id");
-
-    // ===== ASP成果タグ（正しい形）=====
+    // ===== ASP成果タグ（cid付き）=====
     var img = new Image();
     img.src =
       "https://example-asp.com/cv" +
-      "?click_id=" + encodeURIComponent(clickId) +
+      "?cid=" + encodeURIComponent(cid) +
       "&amount=0" +
       "&ts=" + Date.now();
 
     img.style.display = "none";
     document.body.appendChild(img);
 
-    console.log("Affiliate CV Fired with click_id:", clickId);
+    console.log("CV Fired with cid:", cid);
   }
 </script>
 
-
-  <meta http-equiv="refresh" content="0;URL=ok.html">
+<meta http-equiv="refresh" content="0;URL=ok.html">
 </head>
 <body>
-  成果処理中…
+成果処理中…
 </body>
 </html>
