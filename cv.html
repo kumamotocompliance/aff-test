@@ -9,28 +9,20 @@
   if (!localStorage.getItem("cv_fired")) {
     localStorage.setItem("cv_fired", "1");
 
-    // ① imgビーコン
+    const clickId = localStorage.getItem("asp_click_id");
+
+    // ===== ASP成果タグ（正しい形）=====
     var img = new Image();
-    img.src = "https://example-asp.com/cv?aid=TEST123&price=0&ts=" + Date.now();
+    img.src =
+      "https://example-asp.com/cv" +
+      "?click_id=" + encodeURIComponent(clickId) +
+      "&amount=0" +
+      "&ts=" + Date.now();
+
     img.style.display = "none";
     document.body.appendChild(img);
 
-    // ② iframe
-    var iframe = document.createElement("iframe");
-    iframe.src = "https://example-asp.com/cv_iframe.html?aid=TEST123";
-    iframe.style.display = "none";
-    iframe.width = 1;
-    iframe.height = 1;
-    document.body.appendChild(iframe);
-
-    // ③ GTM / GA4
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: "affiliate_cv",
-      affiliate_id: "TEST123"
-    });
-
-    console.log("Affiliate Conversion Fired (ASP full style)");
+    console.log("Affiliate CV Fired with click_id:", clickId);
   }
 </script>
 
