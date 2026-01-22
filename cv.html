@@ -9,17 +9,31 @@
   if (!localStorage.getItem("cv_fired")) {
     localStorage.setItem("cv_fired", "1");
 
-    // ===== ASP成果タグ風（1pxビーコン）=====
+    // ① imgビーコン
     var img = new Image();
-    img.src = "https://example-asp.com/cv?affiliate_id=TEST123&amount=0&ts=" + Date.now();
-    img.width = 1;
-    img.height = 1;
+    img.src = "https://example-asp.com/cv?aid=TEST123&price=0&ts=" + Date.now();
     img.style.display = "none";
     document.body.appendChild(img);
 
-    console.log("Affiliate Conversion Fired (ASP style)");
+    // ② iframe
+    var iframe = document.createElement("iframe");
+    iframe.src = "https://example-asp.com/cv_iframe.html?aid=TEST123";
+    iframe.style.display = "none";
+    iframe.width = 1;
+    iframe.height = 1;
+    document.body.appendChild(iframe);
+
+    // ③ GTM / GA4
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "affiliate_cv",
+      affiliate_id: "TEST123"
+    });
+
+    console.log("Affiliate Conversion Fired (ASP full style)");
   }
 </script>
+
 
   <meta http-equiv="refresh" content="0;URL=ok.html">
 </head>
