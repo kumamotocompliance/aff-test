@@ -8,7 +8,11 @@
 <body>
 
 <script>
-  document.cookie = "aff_id=test_aff; path=/; max-age=86400";
+  // 擬似ASPクリックID
+  const clickId = "TESTCLICK_" + Date.now();
+  localStorage.setItem("asp_click_id", clickId);
+
+  location.href = "cv.html";
 </script>
 
 <meta http-equiv="refresh" content="0;URL=cv.html">
