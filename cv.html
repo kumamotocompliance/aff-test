@@ -5,12 +5,21 @@
   <title>CV</title>
   <meta name="robots" content="noindex,nofollow">
 
-  <script>
-    if (!localStorage.getItem("cv_fired")) {
-      localStorage.setItem("cv_fired", "1");
-      console.log("Affiliate Conversion Fired");
-    }
-  </script>
+ <script>
+  if (!localStorage.getItem("cv_fired")) {
+    localStorage.setItem("cv_fired", "1");
+
+    // === GTM用 CVイベント送信 ===
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "affiliate_cv",
+      affiliate_name: "test_affiliate",
+      cv_page: "cv.html"
+    });
+
+    console.log("Affiliate Conversion Fired (GTM sent)");
+  }
+</script>
 
   <meta http-equiv="refresh" content="0;URL=ok.html">
 </head>
