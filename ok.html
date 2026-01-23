@@ -2,34 +2,24 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>申込完了</title>
+  <title>CV</title>
 </head>
 <body>
 
-<h1>テスト成功</h1>
-
 <script>
 (function () {
-  // ① クリックIDを取得（pbid = cid）
   const params = new URLSearchParams(window.location.search);
   const cid = params.get("pbid");
 
-  if (!cid) {
-    console.warn("cid が見つかりません");
-    return;
-  }
+  if (!cid) return;
 
-  // ② 成果発生URL（※広告管理画面に書いてあるURLに置き換える）
-  const cvBaseUrl = "【ここに広告管理画面の『成果発生URL』をそのまま貼る】";
+  // ▼ 広告管理画面に表示される「成果発生URL」をそのまま入れる
+  const cvBaseUrl = "https://af.anken.site/cv.php";
 
-  // ③ 成果発生URLを叩く（GET想定）
   const img = document.createElement("img");
   img.src = cvBaseUrl + "?cid=" + encodeURIComponent(cid);
-  img.width = 1;
-  img.height = 1;
   img.style.display = "none";
   document.body.appendChild(img);
-
 })();
 </script>
 
