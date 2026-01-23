@@ -10,16 +10,19 @@
 
 <script>
 const params = new URLSearchParams(window.location.search);
-const cid = params.get("pbid");   // クリックID
-const p   = params.get("i");      // 広告識別ID（←超重要）
 
-if (cid && p) {
+const cid = params.get("pbid"); // クリックID
+const i   = params.get("i");    // 広告識別ID（成果認証で使う）
+const p   = params.get("p");    // 登録用（使わないが取得は可）
+
+if (cid && i) {
   const img = document.createElement("img");
-  img.src = `https://af.anken.site/track.php?cid=${cid}&p=${p}&args=TEST_ORDER_001`;
+  img.src = `https://af.anken.site/track.php?cid=${cid}&p=${i}&args=TEST_ORDER_001`;
   img.style.display = "none";
   document.body.appendChild(img);
 }
 </script>
+
 
 
 </body>
