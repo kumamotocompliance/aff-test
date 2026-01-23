@@ -5,17 +5,21 @@
 <h1>OK.HTML LOADED</h1>
 
 <script>
-alert("THIS IS NEW OK.HTML - CV.PHP ONLY");
+(function () {
+  const params = new URLSearchParams(window.location.search);
+  const cid = params.get("pbid");
+  if (!cid) return;
 
-const params = new URLSearchParams(window.location.search);
-const cid = params.get("pbid");
+  // ★ 申込成果（外部CV型）の唯一の正解
+  const cvUrl = "https://af.anken.site/cv.php";
 
-if (cid) {
   const img = document.createElement("img");
-  img.src = "https://af.anken.site/cv.php?cid=" + cid;
+  img.src = cvUrl + "?cid=" + encodeURIComponent(cid);
+  img.style.display = "none";
   document.body.appendChild(img);
-}
+})();
 </script>
+
 
 </body>
 </html>
