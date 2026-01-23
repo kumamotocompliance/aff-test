@@ -4,37 +4,27 @@
 <meta charset="UTF-8">
 <title>CV</title>
 <meta name="robots" content="noindex,nofollow">
+</head>
+<body>
 
 <script>
-  // URL優先 → なければ localStorage
-  const params = new URLSearchParams(location.search);
-  const cid = params.get("cid") || localStorage.getItem("asp_cid");
+  const p = new URLSearchParams(location.search);
+  const cid = p.get("cid");
+  const i   = p.get("i");
+  const m   = p.get("m");
 
-  if (!cid) {
-    console.error("cid not found → tracking NG");
-  }
-
-  if (!localStorage.getItem("cv_fired") && cid) {
-    localStorage.setItem("cv_fired", "1");
-
-    // ===== ASP成果タグ（cid付き）=====
-    var img = new Image();
-    img.src =
-      "https://example-asp.com/cv" +
-      "?cid=" + encodeURIComponent(cid) +
-      "&amount=0" +
-      "&ts=" + Date.now();
-
-    img.style.display = "none";
-    document.body.appendChild(img);
-
-    console.log("CV Fired with cid:", cid);
+  if (!cid || !i || !m) {
+    document.body.innerText = "CV Error: parameter missing";
+  } else {
+    // ★ これが唯一の正解
+    location.replace(
+      "https://af.anken.site/cv.php"
+      + "?cid=" + encodeURIComponent(cid)
+      + "&i="   + encodeURIComponent(i)
+      + "&m="   + encodeURIComponent(m)
+    );
   }
 </script>
 
-<meta http-equiv="refresh" content="0;URL=ok.html">
-</head>
-<body>
-成果処理中…
 </body>
 </html>
