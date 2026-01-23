@@ -1,25 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>CV</title>
+</head>
 <body>
 
-<h1>OK.HTML LOADED</h1>
+<h1>CV PAGE</h1>
 
 <script>
 (function () {
-  const params = new URLSearchParams(window.location.search);
-  const cid = params.get("pbid");
+  const cid = new URLSearchParams(location.search).get("pbid");
   if (!cid) return;
 
-  // ★ 申込成果（外部CV型）の唯一の正解
-  const cvUrl = "https://af.anken.site/cv.php";
-
-  const img = document.createElement("img");
-  img.src = cvUrl + "?cid=" + encodeURIComponent(cid);
-  img.style.display = "none";
-  document.body.appendChild(img);
+  // ★ 申込成果の唯一の入口
+  location.href = "https://af.anken.site/cv.php?cid=" + encodeURIComponent(cid);
 })();
 </script>
-
 
 </body>
 </html>
