@@ -7,9 +7,8 @@
 <body>
 
 <script>
-  // クエリをそのまま引き継いで click.html へ
-  const q = location.search;
-  location.replace("click.html" + q);
+  // ★ パラメータを絶対に落とさない
+  location.replace("click.html" + location.search);
 </script>
 
 </body>
