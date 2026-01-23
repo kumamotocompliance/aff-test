@@ -10,16 +10,10 @@
 
 <script>
 const params = new URLSearchParams(window.location.search);
-
-// ① 実クリック由来の cid
 const cid = params.get("pbid");
 
-// ② 広告識別ID（本番では固定でOK）
+// 広告識別ID（正しい値）
 const i = "pj9f53hwbz";
-
-// ③ 本番想定の購入金額
-// ※ 広告設定の「最低成果金額」を必ず上回ること
-const price = 3000;
 
 if (cid) {
   const img = document.createElement("img");
@@ -27,17 +21,11 @@ if (cid) {
     "https://af.anken.site/track.php"
     + `?cid=${cid}`
     + `&i=${i}`
-    + `&price=${price}`
     + `&args=TEST_ORDER_001`;
   img.style.display = "none";
   document.body.appendChild(img);
 }
 </script>
-
-
-
-
-
 
 </body>
 </html>
