@@ -1,25 +1,20 @@
 <!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>CV</title>
-</head>
+<html>
 <body>
 
+<h1>OK.HTML LOADED</h1>
+
 <script>
-(function () {
-  const params = new URLSearchParams(window.location.search);
-  const cid = params.get("pbid");
-  if (!cid) return;
+alert("THIS IS NEW OK.HTML - CV.PHP ONLY");
 
-  // ★ 申込成果（外部CV型）の唯一の正解
-  const cvUrl = "https://af.anken.site/cv.php";
+const params = new URLSearchParams(window.location.search);
+const cid = params.get("pbid");
 
+if (cid) {
   const img = document.createElement("img");
-  img.src = cvUrl + "?cid=" + encodeURIComponent(cid);
-  img.style.display = "none";
+  img.src = "https://af.anken.site/cv.php?cid=" + cid;
   document.body.appendChild(img);
-})();
+}
 </script>
 
 </body>
