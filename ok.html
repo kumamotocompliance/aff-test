@@ -12,20 +12,16 @@
 const params = new URLSearchParams(window.location.search);
 const cid = params.get("pbid");
 
-// 広告識別ID（正しい値）
-const i = "pj9f53hwbz";
-
 if (cid) {
   const img = document.createElement("img");
   img.src =
-    "https://af.anken.site/track.php"
-    + `?cid=${cid}`
-    + `&i=${i}`
-    + `&args=TEST_ORDER_001`;
+    "【管理画面に記載の成果発生URL】"
+    + `?cid=${cid}`;
   img.style.display = "none";
   document.body.appendChild(img);
 }
 </script>
+
 
   
 </body>
