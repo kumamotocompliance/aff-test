@@ -12,11 +12,11 @@
   const cid = params.get("pbid");
   if (!cid) return;
 
-  // ▼ 新広告の「成果発生URL」を正確に入れる
-  const cvBaseUrl = "https://af.anken.site/cv.php"; // ←ここ要確認
+  // ★ 申込成果（外部CV型）の正解URL
+  const cvUrl = "https://af.anken.site/cv.php";
 
   const img = document.createElement("img");
-  img.src = cvBaseUrl + "?cid=" + encodeURIComponent(cid);
+  img.src = cvUrl + "?cid=" + encodeURIComponent(cid);
   img.style.display = "none";
   document.body.appendChild(img);
 })();
