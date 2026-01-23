@@ -11,12 +11,22 @@
   const params = new URLSearchParams(location.search);
   const cid = params.get("cid");
 
-  if (cid) {
+  if (!cid) {
+    console.error("cidなし → 成果不可");
+  } else {
+    // ===== ASP成果通知 =====
     const img = new Image();
-    img.src = "https://af.anken.site/track.php?cid=" + cid;
+    img.src =
+      "https://af.anken.site/track.php" +
+      "?cid=" + encodeURIComponent(cid);
+
+    img.onload = () => {
+      console.log("CV通知完了", cid);
+      location.replace("ok.html");
+    };
   }
 </script>
 
-
+成果処理中…
 </body>
 </html>
