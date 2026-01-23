@@ -7,22 +7,12 @@
 <body>
 
 <script>
-  const p = new URLSearchParams(location.search);
-  const cid = p.get("cid");
-  const i   = p.get("i");
-  const m   = p.get("m");
+  const params = location.search;
 
-  if (!cid || !i || !m) {
-    document.body.innerText = "parameter missing";
-  } else {
-    // 成果地点へパラメータを保持したまま遷移
-    location.href =
-      "cv.html"
-      + "?cid=" + encodeURIComponent(cid)
-      + "&i="   + encodeURIComponent(i)
-      + "&m="   + encodeURIComponent(m);
-  }
+  // そのままCVへ
+  location.replace("cv.html" + params);
 </script>
+
 
 </body>
 </html>
