@@ -5,18 +5,11 @@
   <title>CV</title>
 </head>
 <body>
-
-<h1>CV PAGE</h1>
-
 <script>
-(function () {
   const cid = new URLSearchParams(location.search).get("pbid");
-  if (!cid) return;
-
-  // ★ 申込成果の唯一の入口
-  location.href = "https://af.anken.site/cv.php?cid=" + encodeURIComponent(cid);
-})();
+  if (cid) {
+    location.href = "https://af.anken.site/cv.php?cid=" + cid;
+  }
 </script>
-
 </body>
 </html>
