@@ -9,17 +9,18 @@
 <script>
 const p = new URLSearchParams(location.search);
 const cid = p.get("cid");
-const i   = p.get("i");
-const m   = p.get("m");
+const i = p.get("i");
+const m = p.get("m");
 
 if (cid && i && m) {
   location.href =
     "https://af.anken.site/cv.php"
-    + "?cid=" + encodeURIComponent(cid)
-    + "&i=" + encodeURIComponent(i)
-    + "&m=" + encodeURIComponent(m);
+    + "?cid=" + cid
+    + "&i=" + i
+    + "&m=" + m;
 }
 </script>
+
 
 </body>
 </html>
