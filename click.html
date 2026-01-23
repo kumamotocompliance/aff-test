@@ -7,14 +7,21 @@
 <body>
 
 <script>
-  // 疑似ASP cid（本番ではASPが付与）
-  const cid = "CID_" + Date.now();
+  const p = new URLSearchParams(location.search);
+  const cid = p.get("cid");
+  const i   = p.get("i");
+  const m   = p.get("m");
 
-  // localStorageに保存
-  localStorage.setItem("asp_cid", cid);
-
-  // CVページへ遷移（URLにも付ける＝実務的に安全）
-  location.href = "cv.html?cid=" + encodeURIComponent(cid);
+  if (!cid || !i || !m) {
+    document.body.innerText = "parameter missing";
+  } else {
+    // 成果地点へパラメータを保持したまま遷移
+    location.href =
+      "cv.html"
+      + "?cid=" + encodeURIComponent(cid)
+      + "&i="   + encodeURIComponent(i)
+      + "&m="   + encodeURIComponent(m);
+  }
 </script>
 
 </body>
