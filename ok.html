@@ -2,27 +2,36 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>CV Test</title>
+  <title>申込完了</title>
 </head>
 <body>
 
-<h1>CV TEST</h1>
+<h1>テスト成功</h1>
 
 <script>
-const params = new URLSearchParams(window.location.search);
-const cid = params.get("pbid");
+(function () {
+  // ① クリックIDを取得（pbid = cid）
+  const params = new URLSearchParams(window.location.search);
+  const cid = params.get("pbid");
 
-if (cid) {
+  if (!cid) {
+    console.warn("cid が見つかりません");
+    return;
+  }
+
+  // ② 成果発生URL（※広告管理画面に書いてあるURLに置き換える）
+  const cvBaseUrl = "【ここに広告管理画面の『成果発生URL』をそのまま貼る】";
+
+  // ③ 成果発生URLを叩く（GET想定）
   const img = document.createElement("img");
-  img.src =
-    "【管理画面に記載の成果発生URL】"
-    + `?cid=${cid}`;
+  img.src = cvBaseUrl + "?cid=" + encodeURIComponent(cid);
+  img.width = 1;
+  img.height = 1;
   img.style.display = "none";
   document.body.appendChild(img);
-}
+
+})();
 </script>
 
-
-  
 </body>
 </html>
