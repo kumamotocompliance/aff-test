@@ -6,9 +6,17 @@
 </head>
 <body>
 <script>
-  const cid = new URLSearchParams(location.search).get("pbid");
-  if (cid) {
-    location.href = "https://af.anken.site/cv.php?cid=" + cid;
+  const p = new URLSearchParams(location.search);
+  const cid = p.get("cid");
+  const i   = p.get("i"); // 広告ID
+  const m   = p.get("m"); // メディアID
+
+  if (cid && i && m) {
+    location.href =
+      "https://af.anken.site/cv.php"
+      + "?cid=" + encodeURIComponent(cid)
+      + "&i="   + encodeURIComponent(i)
+      + "&m="   + encodeURIComponent(m);
   }
 </script>
 </body>
