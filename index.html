@@ -1,7 +1,16 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta http-equiv="refresh" content="0;URL=click.html">
+  <meta charset="UTF-8">
+  <title>Redirect</title>
 </head>
-<body></body>
+<body>
+
+<script>
+  // クエリをそのまま引き継いで click.html へ
+  const q = location.search;
+  location.replace("click.html" + q);
+</script>
+
+</body>
 </html>
