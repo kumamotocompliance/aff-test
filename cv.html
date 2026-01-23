@@ -6,30 +6,20 @@
 <meta name="robots" content="noindex,nofollow">
 
 <script>
-  const params = new URLSearchParams(location.search);
+ const params = new URLSearchParams(location.search);
+const cid = params.get("cid");
+const p   = params.get("p");
 
-  const cid = params.get("cid");
-  const p   = params.get("p"); // 広告ID
-  const i   = params.get("i"); // 広告素材ID
-
-  if (!cid || (!p && !i)) {
-    console.error("必須パラメータ不足", { cid, p, i });
-  } else {
-    // 成果発生
-    const img = new Image();
-    img.src =
-      "https://af.anken.site/track.php"
-      + "?cid=" + encodeURIComponent(cid)
-      + (p ? "&p=" + encodeURIComponent(p) : "")
-      + (i ? "&i=" + encodeURIComponent(i) : "")
-      + "&args=TEST_ORDER_001"
-      + "&ts=" + Date.now();
-
-    img.style.display = "none";
-    document.body.appendChild(img);
-
-    console.log("CV fired", { cid, p, i });
-  }
+if (cid && p) {
+  const img = new Image();
+  img.src =
+    "https://af.anken.site/track.php"
+    + "?cid=" + encodeURIComponent(cid)
+    + "&p=" + encodeURIComponent(p)
+    + "&args=TEST_ORDER_001"
+    + "&ts=" + Date.now();
+  document.body.appendChild(img);
+}
 </script>
 
 </head>
