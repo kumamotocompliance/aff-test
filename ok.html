@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>CV</title>
+<meta charset="UTF-8">
+<title>CV</title>
 </head>
 <body>
-<script>
-  const p = new URLSearchParams(location.search);
-  const cid = p.get("cid");
-  const i   = p.get("i"); // 広告ID
-  const m   = p.get("m"); // メディアID
 
-  if (cid && i && m) {
-    location.href =
-      "https://af.anken.site/cv.php"
-      + "?cid=" + encodeURIComponent(cid)
-      + "&i="   + encodeURIComponent(i)
-      + "&m="   + encodeURIComponent(m);
-  }
+<script>
+const p = new URLSearchParams(location.search);
+const cid = p.get("cid");
+const i   = p.get("i");
+const m   = p.get("m");
+
+if (cid && i && m) {
+  location.href =
+    "https://af.anken.site/cv.php"
+    + "?cid=" + encodeURIComponent(cid)
+    + "&i=" + encodeURIComponent(i)
+    + "&m=" + encodeURIComponent(m);
+}
 </script>
+
 </body>
 </html>
