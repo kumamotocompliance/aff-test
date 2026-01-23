@@ -8,23 +8,15 @@
 <body>
 
 <script>
-  const p = new URLSearchParams(location.search);
-  const cid = p.get("cid");
-  const i   = p.get("i");
-  const m   = p.get("m");
+  const params = new URLSearchParams(location.search);
+  const cid = params.get("cid");
 
-  if (!cid || !i || !m) {
-    document.body.innerText = "CV Error: parameter missing";
-  } else {
-    // ★ これが唯一の正解
-    location.replace(
-      "https://af.anken.site/cv.php"
-      + "?cid=" + encodeURIComponent(cid)
-      + "&i="   + encodeURIComponent(i)
-      + "&m="   + encodeURIComponent(m)
-    );
+  if (cid) {
+    const img = new Image();
+    img.src = "https://af.anken.site/track.php?cid=" + cid;
   }
 </script>
+
 
 </body>
 </html>
