@@ -2,19 +2,24 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>Affiliate CV Test</title>
+  <title>CV Test</title>
 </head>
 <body>
 
-<h1>CV TEST PAGE</h1>
+<h1>CV TEST</h1>
 
-<!-- ▼ アフィリコード ポストバック（テスト用） -->
-<img
-  src="https://af.anken.site/track.php?cid=TEST_CLICK_001&p=12345&args=TEST_ORDER_001"
-  width="1"
-  height="1"
-  style="display:none;"
->
+<script>
+const params = new URLSearchParams(window.location.search);
+const cid = params.get("pbid");   // ← ここ重要
+const p   = params.get("kbp1");   // 広告ID
+
+if (cid && p) {
+  const img = document.createElement("img");
+  img.src = `https://af.anken.site/track.php?cid=${cid}&p=${p}&args=TEST_ORDER_001`;
+  img.style.display = "none";
+  document.body.appendChild(img);
+}
+</script>
 
 </body>
 </html>
