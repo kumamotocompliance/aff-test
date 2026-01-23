@@ -10,11 +10,10 @@
 (function () {
   const params = new URLSearchParams(window.location.search);
   const cid = params.get("pbid");
-
   if (!cid) return;
 
-  // ▼ 広告管理画面に表示される「成果発生URL」をそのまま入れる
-  const cvBaseUrl = "https://af.anken.site/cv.php";
+  // ▼ 新広告の「成果発生URL」を正確に入れる
+  const cvBaseUrl = "https://af.anken.site/cv.php"; // ←ここ要確認
 
   const img = document.createElement("img");
   img.src = cvBaseUrl + "?cid=" + encodeURIComponent(cid);
