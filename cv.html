@@ -4,29 +4,36 @@
 <meta charset="UTF-8">
 <title>CV</title>
 <meta name="robots" content="noindex,nofollow">
-</head>
-<body>
 
 <script>
   const params = new URLSearchParams(location.search);
-  const cid = params.get("cid");
 
-  if (!cid) {
-    console.error("cidなし → 成果不可");
+  const cid = params.get("cid");
+  const p   = params.get("p"); // 広告ID
+  const i   = params.get("i"); // 広告素材ID
+
+  if (!cid || (!p && !i)) {
+    console.error("必須パラメータ不足", { cid, p, i });
   } else {
-    // ===== ASP成果通知 =====
+    // 成果発生
     const img = new Image();
     img.src =
-      "https://af.anken.site/track.php" +
-      "?cid=" + encodeURIComponent(cid);
+      "https://af.anken.site/track.php"
+      + "?cid=" + encodeURIComponent(cid)
+      + (p ? "&p=" + encodeURIComponent(p) : "")
+      + (i ? "&i=" + encodeURIComponent(i) : "")
+      + "&args=TEST_ORDER_001"
+      + "&ts=" + Date.now();
 
-    img.onload = () => {
-      console.log("CV通知完了", cid);
-      location.replace("ok.html");
-    };
+    img.style.display = "none";
+    document.body.appendChild(img);
+
+    console.log("CV fired", { cid, p, i });
   }
 </script>
 
-成果処理中…
+</head>
+<body>
+成果送信中…
 </body>
 </html>
